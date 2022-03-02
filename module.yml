@@ -113,7 +113,7 @@ Resources:
         DBMultiAZ: !Ref DBMultiAZ
         SubDomainNameWithDot: !Ref SubDomainNameWithDot
         EnableIAMDatabaseAuthentication: !Ref EnableIAMDatabaseAuthentication
-      TemplateURL: './node_modules/@cfn-modules/rds-instance/module.yml'
+      TemplateURL: '../rds-instance/module.yml'
 Outputs:
   ModuleId:
     Value: 'rds-postgres'
