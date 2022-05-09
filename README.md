@@ -40,6 +40,8 @@ Resources:
         # aws rds describe-db-engine-versions --engine postgres --query "DBEngineVersions[].EngineVersion"
         EngineVersion: '9.6.8'
         EnableIAMDatabaseAuthentication: 'false' # optional
+        DBParameterGroupName: '' # optional
+        LambdaExecutionRoleArn: '' # optional
       TemplateURL: './node_modules/@cfn-modules/rds-postgres/module.yml'
 ```
 
@@ -185,6 +187,20 @@ Resources:
     <tr>
       <td>EnableIAMDatabaseAuthentication</td>
       <td>Enable <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html">mapping of AWS Identity and Access Management (IAM) accounts to database accounts</a>).</td>
+      <td>false</td>
+      <td>no</td>
+      <td>[true, false]</td>
+    </tr>
+    <tr>
+      <td>DBParameterGroupName</td>
+      <td>Creates a new <a href="https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-parameter-group.html">DB Parameter Group</a> with the specified name.</td>
+      <td>false</td>
+      <td>no</td>
+      <td>[true, false]</td>
+    </tr>
+    <tr>
+      <td>LambdaExecutionRoleArn</td>
+      <td>Adds a <a href="https://docs.aws.amazon.com/cli/latest/reference/rds/add-role-to-db-instance.html">role</a> to the db instance associating it with the 'lambda' feature name.</td>
       <td>false</td>
       <td>no</td>
       <td>[true, false]</td>
