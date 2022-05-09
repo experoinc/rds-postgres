@@ -89,6 +89,14 @@ Parameters:
     Type: String
     AllowedValues: ['true', 'false']
     Default: 'false'
+  DBParameterGroupName:
+    Description: 'Optional DB Parameter Group to assign to the RDS instance being created.'
+    Type: String
+    Default: ''
+  LambdaExecutionRoleArn:
+    Description: 'Role to be added as feature name Lambda for the RDS instance being created.'
+    Type: String
+    Default: ''
 Resources:
   Instance:
     Type: 'AWS::CloudFormation::Stack'
@@ -113,6 +121,8 @@ Resources:
         DBMultiAZ: !Ref DBMultiAZ
         SubDomainNameWithDot: !Ref SubDomainNameWithDot
         EnableIAMDatabaseAuthentication: !Ref EnableIAMDatabaseAuthentication
+        DBParameterGroupName: !Ref DBParameterGroupName
+        LambdaExecutionRoleArn: !Ref LambdaExecutionRoleArn
       TemplateURL: '../rds-instance/module.yml'
 Outputs:
   ModuleId:
