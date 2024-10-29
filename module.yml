@@ -97,6 +97,11 @@ Parameters:
     Description: 'Role to be added as feature name Lambda for the RDS instance being created.'
     Type: String
     Default: ''
+  AllowPostgresMajorVersionUpgrade:
+    Description: 'If an upgrade to a major version of Postgres is allowed.'
+    Type: String
+    AllowedValues: ['true', 'false']
+    Default: 'false'
 Resources:
   Instance:
     Type: 'AWS::CloudFormation::Stack'
@@ -123,6 +128,7 @@ Resources:
         EnableIAMDatabaseAuthentication: !Ref EnableIAMDatabaseAuthentication
         DBParameterGroupName: !Ref DBParameterGroupName
         LambdaExecutionRoleArn: !Ref LambdaExecutionRoleArn
+        AllowPostgresMajorVersionUpgrade: !Ref AllowPostgresMajorVersionUpgrade
       TemplateURL: '../rds-instance/module.yml'
 Outputs:
   ModuleId:
